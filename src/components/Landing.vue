@@ -67,17 +67,20 @@
                     <div style="text-left">
                         <div class="mb-3">
                             <div style="text-align: left;" for="exampleInputEmail1">Email address</div>
-                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="email" class="form-control form-control-sm" 
+                            id="exampleInputEmail1" placeholder="Your Email">
                         </div>
                         <div class="mb-3">
                             <div style="text-align: left;" for="exampleInputPassword1">Password</div>
-                            <input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
+                            <input v-model="logininfo.email" type="password" 
+                            class="form-control form-control-sm" 
+                            id="exampleInputPassword1" placeholder="Your Password">
                         </div>
                         <button type="submit" class="btn btn-sm btn-success" style="width:100%">Submit</button>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
                 </div>
             </div>
