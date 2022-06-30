@@ -8,16 +8,18 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <button @click.prevent="loginModal" class="btn btn-sm btn-primary">Login</button>
                             </li>
                             <li class="nav-item">
-                                <button @click.prevent="loginModal" class="btn btn-sm btn-primary nav-login-button-collapse">Login</button>
+                                <button @click.prevent="registrationModal" class="btn btn-sm btn-primary ms-2">Sign Up</button>
                             </li>
-                        </ul>
+                        </ul> 
                     </div>
-                    <button @click.prevent="loginModal" class="btn btn-sm btn-primary nav-login-button">Login</button>
                 </div>
             </nav>
             
@@ -60,23 +62,30 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                    <h5 v-if="!registrationStatus" class="modal-title" id="exampleModalLabel">Sign In</h5>
+                    <h5 v-else class="modal-title" id="exampleModalLabel">Registration</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div style="text-left">
+                        <div v-if="registrationStatus" class="mb-3">
+                            <div style="text-align: left;" for="nameId">Name</div>
+                            <input v-model="userinfo.name" type="text" class="form-control form-control-sm" 
+                            id="nameId" placeholder="Your Name">
+                        </div>
                         <div class="mb-3">
                             <div style="text-align: left;" for="exampleInputEmail1">Email address</div>
-                            <input type="email" class="form-control form-control-sm" 
+                            <input v-model="userinfo.email" type="email" class="form-control form-control-sm" 
                             id="exampleInputEmail1" placeholder="Your Email">
                         </div>
                         <div class="mb-3">
                             <div style="text-align: left;" for="exampleInputPassword1">Password</div>
-                            <input v-model="logininfo.email" type="password" 
+                            <input v-model="userinfo.password" type="password" 
                             class="form-control form-control-sm" 
                             id="exampleInputPassword1" placeholder="Your Password">
                         </div>
-                        <button type="submit" class="btn btn-sm btn-success" style="width:100%">Submit</button>
+                        <button v-if="registrationStatus" class="btn btn-sm btn-success" style="width:100%">Submit</button>
+                        <button v-else @click.prevent="loginSubmit" class="btn btn-sm btn-success" style="width:100%">Submit</button>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -93,18 +102,29 @@ export default {
     name: 'Landing',
     data(){
         return{
-            logininfo:{
+            password:{
+                name:'',
                 email:'',
                 password:''
             },
+            registrationStatus:false,
             userinfo:[],
             errormessage:[],
         };
     },
     methods:{
         loginModal(){
+            this.registrationStatus = false;
             const myModal = new bootstrap.Modal(document.getElementById('loginModal'), {});
             myModal.show();
+        },
+        registrationModal(){
+            this.registrationStatus = true;
+            const myModal = new bootstrap.Modal(document.getElementById('loginModal'), {});
+            myModal.show();
+        },
+        loginSubmit(){
+            
         }
     }
 }
@@ -133,9 +153,6 @@ export default {
     .bg-light {
         background-color: rgba(255,255,255, .5) !important;
     }
-    .nav-login-button{
-        display: none;
-    }
 
     .cover-caption {
         background: rgba(225, 225, 225, .7);
@@ -156,14 +173,4 @@ export default {
         color: #712529;
         text-align: left;
     }
-
-    @media (min-width: 992px) {
-        .nav-login-button{
-            display: block;
-        }
-        .nav-login-button-collapse{
-            display: none;
-        }
-    }
-
 </style>
