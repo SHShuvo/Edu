@@ -13,6 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+.navbar-light .navbar-brand {
+  color: #712529 !important;
+}
 
 nav {
   padding: 5px;

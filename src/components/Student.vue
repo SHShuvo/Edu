@@ -1,25 +1,41 @@
 <template>
-    <div class="container mt-3">
-        <div class="d-flex justify-content-between">
-            <div>
-                <button @click.prevent="createQuestion" class="btn btn-sm btn-primary">Ask Question</button>
-            </div>
-            <div class="fw-bold">Nzaman Piash</div>
-        </div>
-        <hr>
-        <div v-for="(ques,index) in questions" :key="'ques'+index" class="card mb-4">
-            <div class="card-header d-flex justify-content-between">
-                <div>{{ques.question}}</div>
-            </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <div class="fw-bold">Answered by</div>
-                    <div>{{ques.answerDetail.by}}</div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">EduCov</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/">Home</router-link>
+                        </li>
+                    </ul> 
                 </div>
-                <p class="card-text">{{ques.answerDetail.answer}}</p>
+            </div>
+        </nav>
+        <div class="container mt-3">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <button @click.prevent="createQuestion" class="btn btn-sm btn-primary">Ask Question</button>
+                </div>
+                <div class="fw-bold">Nzaman Piash</div>
+            </div>
+            <hr>
+            <div v-for="(ques,index) in questions" :key="'ques'+index" class="card mb-4">
+                <div class="card-header d-flex justify-content-between">
+                    <div>{{ques.question}}</div>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="fw-bold">Answered by</div>
+                        <div>{{ques.answerDetail.by}}</div>
+                    </div>
+                    <p class="card-text">{{ques.answerDetail.answer}}</p>
+                </div>
             </div>
         </div>
-        <!--Login Modal -->
         <div class="modal fade" id="questionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

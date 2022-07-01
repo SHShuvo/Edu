@@ -8,12 +8,12 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/student-profile/:id',
+    path: '/student-profile',
     name: 'student-profile',
     component: () => import('../components/Student.vue')
   },
   {
-    path: '/teacher-profile/:id',
+    path: '/teacher-profile/',
     name: 'teacher-profile',
     component: () => import('../components/Teacher.vue')
   },
