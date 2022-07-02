@@ -47,7 +47,7 @@
                     <div style="text-left">
                         <div class="mb-3">
                             <div class="mb-2" for="exampleInputEmail1">{{answerForm.question?answerForm.question.question:''}}</div>
-                            <textarea v-model="answerForm.answer" class="form-control form-control-sm" placeholder="Write your question">
+                            <textarea v-model="answerForm.answer" class="form-control form-control-sm" placeholder="Write answer">
 
                             </textarea>
                         </div>
@@ -82,7 +82,7 @@ export default {
                     }
                 },
                 {
-                    question:'How cloud computing works?',
+                    question:'How computer network works?',
                     answerDetail:{
                         by:'Mr. Smith',
                         answer:`In more advanced terms, cloud technology works through data centers. 
